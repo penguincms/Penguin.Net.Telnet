@@ -4,6 +4,8 @@
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Net.Telnet</PackageProjectUrl>
     <Description>A thin telnet client intended for use with Penguin.Net libraries</Description>
     <Version>1.0.4</Version>
+    <AssemblyName>Penguin.Net.Telnet</AssemblyName>
+    <RootNamespace>Penguin.Net.Telnet</RootNamespace>
   </PropertyGroup>
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
 </Project>
