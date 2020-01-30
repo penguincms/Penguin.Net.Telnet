@@ -6,6 +6,7 @@
     <Version>1.0.4</Version>
     <AssemblyName>Penguin.Net.Telnet</AssemblyName>
     <RootNamespace>Penguin.Net.Telnet</RootNamespace>
+    <DocumentationFile>Penguin.Net.Telnet.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
 </Project>
