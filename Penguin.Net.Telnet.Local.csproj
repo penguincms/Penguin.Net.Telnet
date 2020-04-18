@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/penguincms/Penguin.Net.Telnet</PackageProjectUrl>
+    <Description>A thin telnet client intended for use with Penguin.Net libraries</Description>
+    <Version>1.0.4</Version>
+    <AssemblyName>Penguin.Net.Telnet</AssemblyName>
+    <RootNamespace>Penguin.Net.Telnet</RootNamespace>
+    <DocumentationFile>Penguin.Net.Telnet.xml</DocumentationFile>
+  </PropertyGroup>
+  <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
+</Project>
