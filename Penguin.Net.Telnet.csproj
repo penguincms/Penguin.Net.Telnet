@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Net.Telnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Net.Telnet</PackageProjectUrl>
     <Description>A thin telnet client intended for use with Penguin.Net libraries</Description>
     <Version>5.0.5</Version>
     <AssemblyName>Penguin.Net.Telnet</AssemblyName>
