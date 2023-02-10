@@ -21,7 +21,7 @@ namespace Penguin.Net.Telnet
         {
             tcpClient = new TcpClient();
 
-            tcpClient.Connect(new IPEndPoint(this.ResolveIP(RemoteIP), Port));
+            tcpClient.Connect(new IPEndPoint(ResolveIP(RemoteIP), Port));
         }
 
         #endregion Constructors
@@ -34,7 +34,7 @@ namespace Penguin.Net.Telnet
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            this.Dispose(true);
+            Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
@@ -57,13 +57,13 @@ namespace Penguin.Net.Telnet
 
             int tried = 0;
 
-            Exception toThrow = new Exception("Something went wrong and we failed to catch it");
+            Exception toThrow = new("Something went wrong and we failed to catch it");
 
             while (tried++ < Tries)
             {
                 try
                 {
-                    NetworkStream stream = this.tcpClient.GetStream();
+                    NetworkStream stream = tcpClient.GetStream();
                     stream.Write(data, 0, data.Length);
 
                     data = new byte[256];
@@ -92,7 +92,7 @@ namespace Penguin.Net.Telnet
         /// </summary>
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
@@ -102,9 +102,9 @@ namespace Penguin.Net.Telnet
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
                 // TODO: set large fields to null.
 
-                this.tcpClient.Close();
+                tcpClient.Close();
 
-                this.disposedValue = true;
+                disposedValue = true;
             }
         }
 
@@ -115,14 +115,14 @@ namespace Penguin.Net.Telnet
         /// <returns>a .Net IPAddress</returns>
         protected IPAddress ResolveIP(string toResolve)
         {
-            if (IpResolutions.ContainsKey(toResolve))
+            if (IpResolutions.TryGetValue(toResolve, out IPAddress value))
             {
-                return IpResolutions[toResolve];
+                return value;
             }
 
             if (IPAddress.TryParse(toResolve, out IPAddress toReturn))
             {
-                IpResolutions.TryAdd(toResolve, toReturn);
+                _ = IpResolutions.TryAdd(toResolve, toReturn);
                 return toReturn;
             }
             else
@@ -137,7 +137,7 @@ namespace Penguin.Net.Telnet
                 if (hostEntry.AddressList.Length > 0)
                 {
                     toReturn = hostEntry.AddressList[0];
-                    IpResolutions.TryAdd(toResolve, toReturn);
+                    _ = IpResolutions.TryAdd(toResolve, toReturn);
                     return toReturn;
                 }
                 else
@@ -151,8 +151,8 @@ namespace Penguin.Net.Telnet
 
         #region Fields
 
-        private static readonly ConcurrentDictionary<string, IPAddress> IpResolutions = new ConcurrentDictionary<string, IPAddress>();
-        private bool disposedValue = false;
+        private static readonly ConcurrentDictionary<string, IPAddress> IpResolutions = new();
+        private bool disposedValue;
 
         #endregion Fields
 
